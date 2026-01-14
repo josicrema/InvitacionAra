@@ -1,128 +1,102 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitación 31 - Araceli</title>
-    <!-- Tailwind CSS para el Estilo -->
+    <!-- Tailwind CSS - Única dependencia externa confiable -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- React y Babel para procesar el componente en el navegador -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        .font-serif {
-            font-family: 'Playfair Display', serif;
+        body { font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .watercolor-bg {
+            background: radial-gradient(circle at 0% 0%, #fce4ec 0%, transparent 50%),
+                        radial-gradient(circle at 100% 100%, #e1f5fe 0%, transparent 50%);
         }
     </style>
 </head>
+<body class="bg-slate-50 watercolor-bg min-h-screen flex items-center justify-center p-4">
 
-<body class="bg-slate-50">
-    <div id="root"></div>
+    <!-- Card Principal -->
+    <div class="relative w-full max-w-md bg-white/80 backdrop-blur-sm rounded-[2.5rem] shadow-2xl overflow-hidden border-8 border-white animate-fade-in">
+        
+        <div class="relative z-10 p-8 sm:p-10 flex flex-col items-center text-center">
+            <!-- Tag superior -->
+            <span class="px-4 py-1 rounded-full bg-pink-100 text-pink-500 text-[10px] font-bold tracking-[0.2em] uppercase mb-6">
+                ¡Estás invitado!
+            </span>
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+            <!-- Título -->
+            <h1 class="text-5xl font-serif text-slate-800 mb-2 leading-tight">
+                Araceli <br/> 
+                <span class="text-pink-400 italic font-light">31 Años</span>
+            </h1>
 
-        // Mocking Lucide icons for CDN version
-        const Icon = ({ name, size = 24, className = "" }) => {
-            useEffect(() => {
-                if (window.lucide) {
-                    window.lucide.createIcons();
-                }
-            }, []);
-            return <i data-lucide={name} className={className} style={{ width: size, height: size }}></i>;
-        };
+            <p class="text-slate-500 italic mb-10 px-4 text-sm leading-relaxed">
+                "Hay flores que nacen en invierno para <br> llenar el mundo de color."
+            </p>
 
-        const App = () => {
-            const eventInfo = {
-                name: "Araceli",
-                age: "31",
-                date: "17 de Enero, 2026",
-                location: "Parque Ecológico de Cuemanco",
-                dressCode: "Prendas de colores pastel",
-                mapUrl: "https://maps.app.goo.gl/ekm3sb3X9JsBxt7d6",
-                phone: "56 2077 8133"
-            };
-
-            return (
-                <div className="min-h-screen flex flex-col items-center justify-center p-4">
-                    <div className="relative w-full max-w-md bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border-8 border-white">
-                        {/* Background Decor */}
-                        <div className="absolute inset-0 opacity-20 pointer-events-none">
-                            <div className="absolute -top-20 -left-20 w-64 h-64 bg-pink-200 rounded-full blur-3xl"></div>
-                            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-blue-200 rounded-full blur-3xl"></div>
-                        </div>
-
-                        <div className="relative z-10 p-10 flex flex-col items-center text-center">
-                            <span className="px-4 py-1 rounded-full bg-pink-50 text-pink-500 text-xs font-bold tracking-widest uppercase mb-6">
-                                ¡Estás invitado!
-                            </span>
-
-                            <h1 className="text-5xl font-serif text-slate-800 mb-2 leading-tight">
-                                {eventInfo.name} <br />
-                                <span className="text-pink-400 italic font-light">{eventInfo.age} Años</span>
-                            </h1>
-
-                            <p className="text-slate-400 italic mb-10 px-4 text-sm">
-                                "Hay flores que nacen en invierno para llenar el mundo de color."
-                            </p>
-
-                            <div className="w-full space-y-8">
-                                <div className="flex justify-center space-x-12 pb-8 border-b border-pink-50">
-                                    <div className="flex flex-col items-center">
-                                        <Icon name="calendar" className="text-pink-400 mb-2" />
-                                        <span className="text-sm font-bold">17 ENE</span>
-                                        <span className="text-[10px] text-slate-400 uppercase">Sábado</span>
-                                    </div>
-                                    <div className="flex flex-col items-center">
-                                        <Icon name="clock" className="text-pink-400 mb-2" />
-                                        <span className="text-sm font-bold">11:00 AM</span>
-                                        <span className="text-[10px] text-slate-400 uppercase">Puntual</span>
-                                    </div>
-                                </div>
-
-                                <div className="space-y-1">
-                                    <div className="flex items-center justify-center space-x-2 text-slate-700">
-                                        <Icon name="map-pin" size={18} className="text-pink-400" />
-                                        <span className="font-semibold">{eventInfo.location}</span>
-                                    </div>
-                                    <a href={eventInfo.mapUrl} className="text-xs text-blue-400 underline">Abrir mapa</a>
-                                </div>
-
-                                <div className="bg-pink-50/50 rounded-2xl p-4 flex items-center justify-center space-x-4">
-                                    <Icon name="shirt" className="text-pink-400" />
-                                    <div className="text-left">
-                                        <p className="text-[10px] uppercase font-bold text-pink-400 tracking-wider">Código de Vestimenta</p>
-                                        <p className="text-sm italic text-slate-600">{eventInfo.dressCode}</p>
-                                    </div>
-                                </div>
-
-                                <div className="pt-4">
-                                    <p className="text-xs text-slate-400 mb-4 tracking-tighter">Confirma al {eventInfo.phone}</p>
-                                    <a href={`https://wa.me/52${eventInfo.phone.replace(/\s/g, '')}`}
-                                        className="bg-green-500 text-white px-8 py-3 rounded-full font-bold shadow-lg block hover:bg-green-600 transition-all">
-                                        Confirmar por WhatsApp
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+            <!-- Datos del Evento -->
+            <div class="w-full space-y-8">
+                <!-- Fecha y Hora -->
+                <div class="flex justify-center items-center space-x-8 pb-8 border-b border-pink-100">
+                    <div class="flex flex-col items-center">
+                        <svg class="w-6 h-6 text-pink-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <span class="text-sm font-bold text-slate-700">17 ENE</span>
+                        <span class="text-[10px] text-slate-400 uppercase tracking-widest">Sábado</span>
+                    </div>
+                    <div class="w-px h-10 bg-pink-100"></div>
+                    <div class="flex flex-col items-center">
+                        <svg class="w-6 h-6 text-pink-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span class="text-sm font-bold text-slate-700">11:00 AM</span>
+                        <span class="text-[10px] text-slate-400 uppercase tracking-widest">Puntual</span>
                     </div>
                 </div>
-            );
-        };
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
+                <!-- Ubicación -->
+                <div class="space-y-2">
+                    <div class="flex items-center justify-center space-x-2 text-slate-700">
+                        <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span class="font-semibold text-sm">Parque Ecológico de Cuemanco</span>
+                    </div>
+                    <a href="https://maps.app.goo.gl/ekm3sb3X9JsBxt7d6" target="_blank" class="inline-block text-[11px] text-blue-400 hover:text-blue-500 transition-colors uppercase font-bold tracking-tighter">
+                        Ver ubicación en Google Maps
+                    </a>
+                </div>
+
+                <!-- Dress Code -->
+                <div class="bg-pink-50/70 rounded-3xl p-5 flex items-center justify-center space-x-4 border border-pink-100/50">
+                    <svg class="w-7 h-7 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 8l-2-2m-5.414 5.414a2 2 0 112.828-2.828 2 2 0 01-2.828 2.828zM15 11l-3 3m0 0l-3-3m3 3V3"/>
+                    </svg>
+                    <div class="text-left">
+                        <p class="text-[10px] uppercase font-bold text-pink-400 tracking-[0.1em]">Código de Vestimenta</p>
+                        <p class="text-sm italic text-slate-600">Prendas de colores pastel</p>
+                    </div>
+                </div>
+
+                <!-- RSVP -->
+                <div class="pt-6">
+                    <p class="text-[11px] text-slate-400 mb-4 tracking-normal italic">Favor de confirmar antes del 15 de enero</p>
+                    <a href="https://wa.me/525620778133" 
+                       class="bg-[#25D366] text-white px-8 py-4 rounded-full font-bold shadow-xl shadow-green-100 flex items-center justify-center space-x-3 hover:scale-105 active:scale-95 transition-all w-full">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 0 5.414 0 12.05c0 2.123.553 4.197 1.605 6.013L0 24l6.135-1.61a11.782 11.782 0 005.91 1.586h.005c6.635 0 12.05-5.414 12.05-12.05 0-3.218-1.253-6.242-3.528-8.517z"/>
+                        </svg>
+                        <span>Confirmar Asistencia</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
-
 </html>
